@@ -139,31 +139,3 @@ const modal=$('#locationModal');
 $('.location')?.addEventListener('click',()=>modal.showModal());
 $('.location-close')?.addEventListener('click',()=>modal.close());
 $('.copy-address')?.addEventListener('click',async()=>{const address='Salón Caiuc, Av. Tristán Cornejo 224';try{await navigator.clipboard.writeText(address);notify('Dirección copiada');}catch{notify(address);}});
-
-const galleryImages = [1, 2, 3, 4, 5].map(number => `assets/galeria-violeta-${number}.jpeg`);
-const galleryTrack = $('#galleryTrack');
-const galleryProgress = $('#galleryProgress');
-const galleryLightbox = $('#galleryLightbox');
-const galleryLightboxImage = $('#galleryLightboxImage');
-const galleryLightboxCount = $('#galleryLightboxCount');
-let galleryIndex = 0;
-function showGalleryImage(index) {
-  galleryIndex = (index + galleryImages.length) % galleryImages.length;
-  galleryLightboxImage.src = galleryImages[galleryIndex];
-  galleryLightboxCount.textContent = `${galleryIndex + 1} / ${galleryImages.length}`;
-}
-document.querySelectorAll('[data-gallery-index]').forEach(button => {
-  button.addEventListener('click', () => {
-    showGalleryImage(Number(button.dataset.galleryIndex));
-    galleryLightbox.showModal();
-  });
-});
-$('.gallery-lightbox-close')?.addEventListener('click', () => galleryLightbox.close());
-$('.gallery-lightbox-prev')?.addEventListener('click', () => showGalleryImage(galleryIndex - 1));
-$('.gallery-lightbox-next')?.addEventListener('click', () => showGalleryImage(galleryIndex + 1));
-galleryLightbox?.addEventListener('click', event => { if (event.target === galleryLightbox) galleryLightbox.close(); });
-galleryTrack?.addEventListener('scroll', () => {
-  const limit = galleryTrack.scrollWidth - galleryTrack.clientWidth;
-  const progress = limit ? galleryTrack.scrollLeft / limit : 0;
-  galleryProgress.style.transform = `scaleX(${1 + progress * 4})`;
-}, { passive: true });
