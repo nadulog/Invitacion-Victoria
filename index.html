@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#050505">
+  <title>XV Violeta</title>
+  <meta name="description" content="Violeta quiere compartir una noche inolvidable con vos. Te esperamos para celebrar sus XV.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:title" content="XV Violeta · Una noche bajo las estrellas">
+  <meta property="og:description" content="Viernes 2 de octubre de 2026, 21:30 h · Salón Caiuc.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="gallery.css">
+  <link rel="stylesheet" href="plates.css">
+</head>
+<body>
+  <audio id="invitationAudio" src="assets/wonderwall.mp3" preload="metadata" loop></audio>
+
+  <section class="intro-screen" id="introScreen" aria-label="Ingresar a la invitación">
+    <img class="intro-art" src="assets/intro-violeta-estrellas.png" alt="Violeta">
+    <div class="intro-twinkles" id="introTwinkles" aria-hidden="true"></div>
+    <div class="intro-flash" aria-hidden="true"></div>
+    <div class="intro-burst" id="introBurst" aria-hidden="true"></div>
+    <div class="intro-content">
+      <div class="intro-actions">
+        <button id="enterWithMusic" type="button"><span aria-hidden="true">♫</span> ENTRAR CON MÚSICA</button>
+        <button id="enterWithoutMusic" type="button"><span aria-hidden="true">☆</span> ENTRAR SIN MÚSICA</button>
+      </div>
+    </div>
+  </section>
+
+  <button class="audio-toggle" id="audioToggle" type="button" aria-label="Reproducir música" aria-pressed="false"><span aria-hidden="true">♫</span></button>
+
+  <main class="invitation" aria-label="Invitación de quince años de Violeta">
+    <section class="panel cover" aria-label="Portada">
+      <img src="assets/portada-violeta-logo.png" alt="XV Violeta">
+    </section>
+
+    <section class="panel falling-stars-panel" id="fallingStarsPanel" aria-label="Hay noches que se sueñan toda la vida">
+      <img src="assets/frase-violeta-v2.png" alt="Hay noches que se sueñan toda la vida y quiero compartirla con vos">
+      <div class="falling-stars" id="fallingStars" aria-hidden="true"></div>
+    </section>
+
+    <section class="panel countdown-panel silver-plate">
+      <img src="assets/cuenta-regresiva-limpia.png" alt="Cuenta regresiva para los XV de Violeta">
+      <div class="countdown-live" aria-label="Cuenta regresiva">
+        <div><strong id="days">00</strong><span>DÍAS</span></div><i aria-hidden="true">✦</i>
+        <div><strong id="hours">00</strong><span>HORAS</span></div><i aria-hidden="true">✦</i>
+        <div><strong id="minutes">00</strong><span>MINUTOS</span></div><i aria-hidden="true">✦</i>
+        <div><strong id="seconds">00</strong><span>SEGUNDOS</span></div>
+      </div>
+    </section>
+
+    <section class="panel date-reveal" id="dateReveal">
+      <img src="assets/fecha-violeta.png" alt="Viernes 2 de octubre de 2026 a las 21:30">
+      <button class="hotspot calendar" type="button" aria-label="Agregar al calendario"></button>
+      <canvas class="reveal-canvas" id="revealCanvas" aria-label="Pasá el dedo para descubrir la fecha"></canvas>
+      <div class="magic-trail" id="magicTrail" aria-hidden="true"></div>
+      <div class="reveal-guide" id="revealGuide" aria-hidden="true">
+        <strong>HAY UNA FECHA POR DESCUBRIR</strong><span>Pasá tu dedo sobre la pantalla</span>
+        <div class="finger-demo"><b>☝</b><i></i></div>
+      </div>
+    </section>
+
+    <section class="panel dress-code-panel" aria-label="Dress code elegante sport">
+      <img src="assets/dress-code-violeta.png" alt="Dress code: elegante sport">
+    </section>
+
+    <section class="panel linked location-scene">
+      <img src="assets/ubicacion-violeta.png" alt="Salón Caiuc, Av. Tristán Cornejo 224">
+      <button class="hotspot location" type="button" aria-label="Ver ubicación"></button>
+    </section>
+
+    <section class="photo-gallery" aria-labelledby="galleryTitle">
+      <div class="gallery-heading">
+        <span>UN POQUITO DE MÍ</span>
+        <h2 id="galleryTitle">Mis fotos</h2>
+        <p>Deslizá para verlas todas</p>
+      </div>
+      <div class="gallery-track" id="galleryTrack">
+        <button class="gallery-photo" type="button" data-gallery-index="0" aria-label="Ampliar foto 1 de 5"><img src="assets/galeria-violeta-1.jpeg" alt="Violeta en una sesión de fotos" loading="lazy"></button>
+        <button class="gallery-photo" type="button" data-gallery-index="1" aria-label="Ampliar foto 2 de 5"><img src="assets/galeria-violeta-2.jpeg" alt="Violeta sentada entre luces de estudio" loading="lazy"></button>
+        <button class="gallery-photo" type="button" data-gallery-index="2" aria-label="Ampliar foto 3 de 5"><img src="assets/galeria-violeta-3.jpeg" alt="Retrato de Violeta con luces rojas y azules" loading="lazy"></button>
+        <button class="gallery-photo" type="button" data-gallery-index="3" aria-label="Ampliar foto 4 de 5"><img src="assets/galeria-violeta-4.jpeg" alt="Violeta frente a una instalación de luces" loading="lazy"></button>
+        <button class="gallery-photo" type="button" data-gallery-index="4" aria-label="Ampliar foto 5 de 5"><img src="assets/galeria-violeta-5.jpeg" alt="Retrato en blanco y negro de Violeta" loading="lazy"></button>
+      </div>
+      <div class="gallery-progress" aria-hidden="true"><i id="galleryProgress"></i></div>
+    </section>
+
+    <section class="panel linked bloomkeep-scene" aria-label="BloomKeep, guardá los recuerdos de esta noche">
+      <img src="assets/bloomkeep-victoria.png" alt="BloomKeep: compartí tus fotos y reviví cada momento en un solo lugar">
+      <a class="hotspot bloomkeep" href="https://app.bloomkeep.site/victoria-15" target="_blank" rel="noopener" aria-label="Ingresar a BloomKeep"></a>
+    </section>
+
+    <section class="panel linked music-scene silver-plate" id="musicScene">
+      <img src="assets/musica.png" alt="Ayudame a crear la playlist de mi fiesta">
+      <a class="hotspot music" href="https://open.spotify.com/playlist/2om6PQtX0DURRg3KfHdOgs?si=7wl8WcO3SbuR6YelP7ZTig&amp;utm_source=whatsapp&amp;pt=4ded54154a3f5fe737ae04863f2283a0&amp;pi=ANZw2WqhS-mvb" target="_blank" rel="noopener" aria-label="Agregar una canción"></a>
+      <div class="live-equalizer" id="liveEqualizer" aria-hidden="true"></div>
+    </section>
+
+    <section class="panel linked confirm-scene">
+      <img src="assets/confirmacion-violeta.png" alt="Confirmar asistencia a los XV de Violeta">
+      <a class="hotspot confirm" href="https://bloomdate-rsvp.netlify.app/r/cumple-xv-violeta" target="_blank" rel="noopener" aria-label="Confirmar asistencia"></a>
+    </section>
+
+    <footer class="site-footer">
+      <img class="footer-logo" src="assets/bloomdate-logo.svg" alt="BloomDate">
+      <p class="footer-love">Hecho con amor <span aria-label="corazón">♥</span> por BloomDate</p>
+      <nav class="footer-links" aria-label="Contacto de BloomDate">
+        <a href="https://wa.me/541140436324" target="_blank" rel="noopener"><img src="https://cdn.simpleicons.org/whatsapp/e9e7e2" alt="WhatsApp"></a>
+        <a href="https://www.instagram.com/bloomdate.invitaciones/" target="_blank" rel="noopener"><img src="https://cdn.simpleicons.org/instagram/e9e7e2" alt="Instagram"></a>
+        <a href="https://bloomdate-site.netlify.app/" target="_blank" rel="noopener"><img src="https://api.iconify.design/lucide:globe-2.svg?color=%23e9e7e2" alt="Sitio web"></a>
+      </nav>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog class="location-modal" id="locationModal" aria-label="Cómo llegar a Salón Caiuc">
+    <div class="location-card">
+      <button class="location-close" type="button" aria-label="Cerrar">×</button>
+      <span>CÓMO LLEGAR</span><h2>SALÓN CAIUC</h2><p>Av. Tristán Cornejo 224</p>
+      <a href="https://maps.app.goo.gl/QUdiF38mk9XTdvhV7?g_st=iw" target="_blank" rel="noopener">ABRIR EN GOOGLE MAPS</a>
+      <a href="https://www.waze.com/ul?q=Av.%20Trist%C3%A1n%20Cornejo%20224&navigate=yes" target="_blank" rel="noopener">ABRIR EN WAZE</a>
+      <button class="copy-address" type="button">COPIAR DIRECCIÓN</button>
+      <div class="modal-star" aria-hidden="true">✦</div>
+    </div>
+  </dialog>
+  <dialog class="gallery-lightbox" id="galleryLightbox" aria-label="Foto ampliada">
+    <button class="gallery-lightbox-close" type="button" aria-label="Cerrar foto">×</button>
+    <button class="gallery-lightbox-arrow gallery-lightbox-prev" type="button" aria-label="Foto anterior">‹</button>
+    <img id="galleryLightboxImage" src="assets/galeria-violeta-1.jpeg" alt="Foto ampliada de Violeta">
+    <button class="gallery-lightbox-arrow gallery-lightbox-next" type="button" aria-label="Foto siguiente">›</button>
+    <span class="gallery-lightbox-count" id="galleryLightboxCount">1 / 5</span>
+  </dialog>
+  <script src="script.js"></script>
+</body>
+</html>
