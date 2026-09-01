@@ -12,6 +12,7 @@ const publicFiles = new Set([
   'assets/cuenta-regresiva-limpia.png', 'assets/musica.png',
   'assets/dress-code-violeta.png', 'assets/intro-violeta-estrellas.png',
   'assets/bloomkeep-victoria.png',
+  'assets/victoria-whatsapp-logo.jpg',
   'assets/frase-violeta.png', 'assets/frase-violeta-v2.png',
   'assets/galeria-violeta-1.jpeg', 'assets/galeria-violeta-2.jpeg',
   'assets/galeria-violeta-3.jpeg', 'assets/galeria-violeta-4.jpeg',

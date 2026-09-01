@@ -9,6 +9,12 @@ const intro = $('#introScreen');
 const toast = $('#toast');
 let entered = false;
 
+const invitationSchedule = new URLSearchParams(location.search).get('horario') === '0030' ? '0030' : '2130';
+const dateTimeDisplay = $('#dateTimeDisplay');
+const dateImage = $('#dateReveal > img');
+if (dateTimeDisplay) dateTimeDisplay.textContent = invitationSchedule === '0030' ? '00:30 HS' : '21:30 HS';
+if (dateImage) dateImage.alt = `Viernes 2 de octubre de 2026 a las ${invitationSchedule === '0030' ? '00:30' : '21:30'}`;
+
 const introTwinkles = $('#introTwinkles');
 if (introTwinkles) {
   for (let n = 0; n < 58; n += 1) {
@@ -132,7 +138,8 @@ if (fallingStarsPanel) fallingObserver.observe(fallingStarsPanel);
 
 function notify(message){toast.textContent=message;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2200);}
 $('.calendar')?.addEventListener('click',()=>{
-  const event=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//XV Violeta//ES','BEGIN:VEVENT','UID:xv-violeta-20261002@salon-caiuc','DTSTAMP:20260831T120000Z','DTSTART:20261003T003000Z','DTEND:20261003T073000Z','SUMMARY:XV de Violeta','LOCATION:Salón Caiuc - Av. Tristán Cornejo 224','DESCRIPTION:Fiesta de XV de Violeta.','END:VEVENT','END:VCALENDAR'].join('\r\n');
+  const startsAt = invitationSchedule === '0030' ? '20261003T033000Z' : '20261003T003000Z';
+  const event=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//XV Violeta//ES','BEGIN:VEVENT',`UID:xv-violeta-${invitationSchedule}@salon-caiuc`,'DTSTAMP:20260831T120000Z',`DTSTART:${startsAt}`,'DTEND:20261003T073000Z','SUMMARY:XV de Violeta','LOCATION:Salón Caiuc - Av. Tristán Cornejo 224','DESCRIPTION:Fiesta de XV de Violeta.','END:VEVENT','END:VCALENDAR'].join('\r\n');
   const link=document.createElement('a');link.href=URL.createObjectURL(new Blob([event],{type:'text/calendar;charset=utf-8'}));link.download='XV-Violeta.ics';link.click();URL.revokeObjectURL(link.href);
 });
 const modal=$('#locationModal');
